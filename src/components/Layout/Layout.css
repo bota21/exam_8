@@ -1,34 +1,38 @@
-.Layout{
+.Layout {
   display: flex;
 }
-.layout_wrapper{
-  width: 10%;
-display: flex;
-flex-direction: column;
-padding: 30px;
-background: lightblue;
-margin: 30px;
-border-radius: 3px;
+
+.layout_wrapper {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background: lightblue;
+  margin: 30px;
+  border-radius: 3px;
 }
-.layout_link{
+
+.layout_link {
   text-decoration: none;
   color: #000;
   margin: 10px 0;
   font-size: 18px;
 }
-.layout_link:hover{
+
+.layout_link:hover {
   color: gold;
 }
-.active_layout{
+
+.active_layout {
   font-weight: 700;
   color: goldenrod;
 }
-.layout_wrapper_child{
+
+.layout_wrapper_child {
   width: 60%;
+  min-height: 100%;
   background: lightblue;
-  height: 200px;
-  padding: 30px;
-background: lightblue;
-margin: 30px 10px 30px 100px;
-border-radius: 3px;
+  padding: 10px;
+  margin: 30px 10px 30px 100px;
+  border-radius: 3px;
 }
