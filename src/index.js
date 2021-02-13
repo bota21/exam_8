@@ -6,7 +6,7 @@ import Quotes from './container/Quotes/Quotes';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-axios.default.baseURL = 'https://js-react-node-default-rtdb.firebaseio.com/quotes';
+axios.defaults.baseURL = 'https://js-react-node-default-rtdb.firebaseio.com';
 
 ReactDOM.render(
   <BrowserRouter>

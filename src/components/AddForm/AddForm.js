@@ -6,18 +6,18 @@ const AddForm = props => {
       <h2>Submit new quote</h2>
       <div className="form_wrapper_input">
         <label htmlFor="select">Category</label>
-        <select name="" id="select">
+        <select value={props.selectValue} id="select" onChange={props.changeSelect}>
           <option value="">Choose one of category</option>
-          <option value="star-wars">Star wars</option>
-          <option value="famous-people">Famous people</option>
-          <option value="saying">Saying</option>
-          <option value="humour">Humour</option>
-          <option value="motivational">Motivational</option>
+          <option value={props.star_wars}>Star wars</option>
+          <option value={props.famous_people}>Famous people</option>
+          <option value={props.saying}>Saying</option>
+          <option value={props.humour}>Humour</option>
+          <option value={props.motivational}>Motivational</option>
         </select>
       </div>
       <div className="form_wrapper_input">
         <label htmlFor="input">Author</label>
-        <input type="text" id='input' name={props.name} onChange={props.change} />
+        <input type="text" id='input' name={props.input} onChange={props.change} />
       </div>
       <div className="form_wrapper_input">
         <label htmlFor="textarea">Quote text</label>

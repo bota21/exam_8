@@ -12,12 +12,12 @@ const Layout = props => {
           activeClassName='active_layout'>
           All
      </NavLink>
-        <NavLink to='/quotes/star-wars'
+        <NavLink to='/quotes/star_wars'
           className='layout_link'
           activeClassName='active_layout'>
           Star wars
     </NavLink>
-        <NavLink to='/quotes/famous-people'
+        <NavLink to='/quotes/famous_people'
           className='layout_link'
           activeClassName='active_layout'>
           Famous people</NavLink>

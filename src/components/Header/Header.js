@@ -6,7 +6,7 @@ const Header = () => {
     <div className='logo'>Quotes Central</div>
     <nav className="menu">
       <NavLink to='/quotes' className='menu_link' activeClassName='active_menu'>Quotes</NavLink>
-      <NavLink to='/add-quote' className='menu_link' activeClassName='active_menu'>Submit new quote</NavLink>
+      <NavLink to='/add_quote' className='menu_link' activeClassName='active_menu'>Submit new quote</NavLink>
     </nav>
   </header>
 }
