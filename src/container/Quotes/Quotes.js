@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from '../../components/ModalWindow/Spinner/Spinner';
 import EditForm from '../../components/EditForm/EditForm';
+import { useHistory } from 'react-router-dom';
+
 
 const Quotes = () => {
   const [loading, setLoading] = useState(false);
@@ -22,6 +24,8 @@ const Quotes = () => {
     { input: '', textarea: '' }
   );
   const [select, setSelected] = useState({ value: '' });
+  const [idEdit, setIdEdit] = useState('');
+  const [editValue, setEditValue] = useState([]);
 
   useEffect(() => {
     let fetchData = async () => {
@@ -137,7 +141,8 @@ const Quotes = () => {
     fetchData().finally(() => setLoading(false))
   }
   let formEdit = (id) => {
-    return window.location.href = '/quotes/' + id + '/edit'
+    setIdEdit(id);
+    return history.push('/quotes/' + id + '/edit')
   }
   let renderAll = () => {
     return <>
@@ -148,7 +153,42 @@ const Quotes = () => {
       <Motivational array={motivationalValue} delete={removeQuoteMotivational} edit={formEdit} />
     </>
   }
+  let submitEditForm = (e) => {
+    e.preventDefault();
+    let fetchData = async () => {
+      setLoading(true)
+      try {
+        if (select.value !== '') {
+          let value = { author: editValue.author, text: editValue.text, category: select.value }
+           await axios.put('quotes/' + idEdit + '.json', value);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    fetchData().finally(() => setLoading(false))
+  }
 
+  let history = useHistory();
+
+  useEffect(() => {
+    setLoading(true);
+    let fetchData = async () => {
+      try {
+        let response = await axios.get('/quotes/' + idEdit + '.json');
+        setEditValue(response.data)
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    fetchData().finally(() => setLoading(false))
+  }, [idEdit])
+
+  let changeEditValue = e => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setEditValue({ ...editValue, [name]: value })
+  }
   return (
     <div className="Quotes">
       <Layout>
@@ -161,7 +201,8 @@ const Quotes = () => {
             return <Star_wars
               array={starValue}
               delete={removeQuoteStar}
-              edit={formEdit}
+              setArray={idEdit}
+              edit={(id) => formEdit(id)}
             />
           }} />
           <Route path='/quotes/famous_people' render={() => {
@@ -195,7 +236,19 @@ const Quotes = () => {
           <Route path='/quotes/:id/edit'
             render={() => {
               return <EditForm
-                inputValue={(id) => console.log(id)}
+                submit={(e, id) => submitEditForm(e, id)}
+                valueInput={editValue.author}
+                valueTextarea={editValue.text}
+                input='author'
+                textarea='text'
+                change={changeEditValue}
+                selectValue={select.value}
+                changeSelect={changeSelect}
+                star_wars='star_wars'
+                famous_people='famous_people'
+                humour='humour'
+                saying='saying'
+                motivational='motivational'
               />
             }}
           />
@@ -209,6 +262,7 @@ const Quotes = () => {
               selectValue={select.value}
               star_wars='star_wars'
               famous_people='famous_people'
+              humour='humour'
               saying='saying'
               motivational='motivational'
             />
