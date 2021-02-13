@@ -1,9 +1,10 @@
+import { useEffect } from 'react';
 import './EditForm.css';
 
 const EditForm = props => {
   return <form onSubmit={props.submit}>
     <div className="form_wrapper">
-      <h2>Submit new quote</h2>
+      <h2>Edit a quote</h2>
       <div className="form_wrapper_input">
         <label htmlFor="select">Category</label>
         <select value={props.selectValue} id="select" onChange={props.changeSelect}>
@@ -17,11 +18,11 @@ const EditForm = props => {
       </div>
       <div className="form_wrapper_input">
         <label htmlFor="input">Author</label>
-        <input type="text" id='input' name={props.input} onChange={props.change} />
+        <input type="text" id='input' value={props.valueInput} name={props.input} onChange={props.change} />
       </div>
       <div className="form_wrapper_input">
         <label htmlFor="textarea">Quote text</label>
-        <textarea name={props.textarea} onChange={props.change} id="textarea"></textarea>
+        <textarea name={props.textarea} value={props.valueTextarea} onChange={props.change} id="textarea"></textarea>
       </div>
       <button>Save</button>
     </div>

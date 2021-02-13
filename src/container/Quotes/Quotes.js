@@ -1,4 +1,3 @@
-import All from '../../components/Quotes/All';
 import Star_wars from '../../components/Quotes/Star_wars';
 import Famous_people from '../../components/Quotes/Famous_people';
 import Saying from '../../components/Quotes/Saying';
@@ -137,69 +136,88 @@ const Quotes = () => {
     }
     fetchData().finally(() => setLoading(false))
   }
+  let formEdit = (id) => {
+    return window.location.href = '/quotes/' + id + '/edit'
+  }
+  let renderAll = () => {
+    return <>
+      <Star_wars array={starValue} delete={removeQuoteStar} edit={formEdit} />
+      <Famous_people array={famousValue} delete={removeQuoteFamous} edit={formEdit} />
+      <Saying array={sayingValue} delete={removeQuoteSaying} edit={formEdit} />
+      <Humour array={humourValue} delete={removeQuoteHumour} edit={formEdit} />
+      <Motivational array={motivationalValue} delete={removeQuoteMotivational} edit={formEdit} />
+    </>
+  }
 
-return (
-  <div className="Quotes">
-    <Layout>
-      {loading ? <Spinner /> : null}
-      <Switch>
-        <Route path='/' exact render={() => { return <All /> }} />
-        <Route path='/quotes' exact render={() => { return <All /> }} />
-        <Route path='/quotes/all' render={() => { return All }} />
-        <Route path='/quotes/star_wars' render={() => {
-          return <Star_wars
-            array={starValue}
-            delete={removeQuoteStar}
+  return (
+    <div className="Quotes">
+      <Layout>
+        {loading ? <Spinner /> : null}
+        <Switch>
+          <Route path='/' exact render={() => { return renderAll() }} />
+          <Route path='/quotes' exact render={() => { return renderAll() }} />
+          <Route path='/quotes/all' render={() => { return renderAll() }} />
+          <Route path='/quotes/star_wars' render={() => {
+            return <Star_wars
+              array={starValue}
+              delete={removeQuoteStar}
+              edit={formEdit}
+            />
+          }} />
+          <Route path='/quotes/famous_people' render={() => {
+            return <Famous_people
+              array={famousValue}
+              delete={removeQuoteFamous}
+              edit={formEdit}
+            />
+          }} />
+          <Route path='/quotes/saying' render={() => {
+            return <Saying
+              array={sayingValue}
+              delete={removeQuoteSaying}
+              edit={formEdit}
+            />
+          }} />
+          <Route path='/quotes/humour' render={() => {
+            return <Humour
+              array={humourValue}
+              delete={removeQuoteHumour}
+              edit={formEdit}
+            />
+          }} />
+          <Route path='/quotes/motivational' render={() => {
+            return <Motivational
+              array={motivationalValue}
+              delete={removeQuoteMotivational}
+              edit={formEdit}
+            />
+          }} />
+          <Route path='/quotes/:id/edit'
+            render={() => {
+              return <EditForm
+                inputValue={(id) => console.log(id)}
+              />
+            }}
           />
-        }} />
-        <Route path='/quotes/famous_people' render={() => {
-          return <Famous_people
-            array={famousValue}
-            delete={removeQuoteFamous}
-          />
-        }} />
-        <Route path='/quotes/saying' render={() => {
-          return <Saying
-            array={sayingValue}
-            delete={removeQuoteSaying}
-          />
-        }} />
-        <Route path='/quotes/humour' render={() => {
-          return <Humour
-            array={humourValue}
-            delete={removeQuoteHumour}
-          />
-        }} />
-        <Route path='/quotes/motivational' render={() => {
-          return <Motivational
-            array={motivationalValue}
-            delete={removeQuoteMotivational}
-          />
-        }} />
-        <Route path='/quotes/edit'
-          render={() => {
-            return <EditForm />
-          }}
-        />
-        <Route path='/add_quote' render={() => {
-          return <AddForm
-            change={changeQuoteValue}
-            submit={submitQuoteForm}
-            input='input'
-            textarea='textarea'
-            changeSelect={changeSelect}
-            selectValue={select.value}
-            star_wars='star_wars'
-            famous_people='famous_people'
-            saying='saying'
-            motivational='motivational'
-          />
-        }} />
-        <Route render={() => { return <p>Page not found</p> }} />
-      </Switch>
-    </Layout>
-  </div>
-);
+          <Route path='/add_quote' render={() => {
+            return <AddForm
+              change={changeQuoteValue}
+              submit={submitQuoteForm}
+              input='input'
+              textarea='textarea'
+              changeSelect={changeSelect}
+              selectValue={select.value}
+              star_wars='star_wars'
+              famous_people='famous_people'
+              saying='saying'
+              motivational='motivational'
+            />
+          }} />
+          <Route render={() => { return <p>Page not found</p> }} />
+        </Switch>
+      </Layout>
+    </div>
+  );
 }
 
 export default Quotes;
