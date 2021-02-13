@@ -74,8 +74,10 @@ const Quotes = () => {
     await axios.delete('/quotes/' + copyStar[index].id + '.json')
       .then(response => console.log(response))
       .catch(console.error);
+      window.location.href = '/quotes/' + starValue[0].category
     setLoading(false)
   }
+
 
   let removeQuoteFamous = async id => {
     setLoading(true)
@@ -84,6 +86,7 @@ const Quotes = () => {
     await axios.delete('/quotes/' + copyArray[index].id + '.json')
       .then(response => console.log(response))
       .catch(console.error)
+      window.location.href = '/quotes/' + famousValue[0].category
     setLoading(false)
   }
   let removeQuoteSaying = async id => {
@@ -92,7 +95,8 @@ const Quotes = () => {
     let copyArray = [...sayingValue];
     await axios.delete('/quotes/' + copyArray[index].id + '.json')
       .then(response => console.log(response))
-      .catch(console.error)
+      .catch(console.error);
+      window.location.href = '/quotes/' + sayingValue[0].category
     setLoading(false)
   }
   let removeQuoteHumour = async id => {
@@ -102,6 +106,7 @@ const Quotes = () => {
     await axios.delete('/quotes/' + copyArray[index].id + '.json')
       .then(response => console.log(response))
       .catch(console.error)
+      window.location.href = '/quotes/' + humourValue[0].category
     setLoading(false)
   }
   let removeQuoteMotivational = async id => {
@@ -111,6 +116,7 @@ const Quotes = () => {
     await axios.delete('/quotes/' + copyArray[index].id + '.json')
       .then(response => console.log(response))
       .catch(console.error)
+      window.location.href = '/quotes/' + motivationalValue[0].category
     setLoading(false)
   }
   let changeSelect = (e) => {
@@ -137,6 +143,7 @@ const Quotes = () => {
       } catch (e) {
         console.error(e);
       }
+      window.location.href = '/quotes/' + select.value
     }
     fetchData().finally(() => setLoading(false))
   }
@@ -165,6 +172,7 @@ const Quotes = () => {
       } catch (e) {
         console.error(e);
       }
+      window.location.href = '/quotes/' + select.value
     }
     fetchData().finally(() => setLoading(false))
   }
