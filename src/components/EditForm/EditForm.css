@@ -1,0 +1,27 @@
+.form_wrapper_input{
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.form_wrapper_input select{
+  width: 200px;
+  padding: 5px;
+  margin-top: 5px;
+  outline: none;
+}
+.form_wrapper_input input{
+  width: 300px;
+  padding: 5px;
+  margin-top: 5px;
+  outline: none;
+}
+.form_wrapper_input textarea{
+  width: 100%;
+  min-height: 100px;
+  padding: 5px;
+  margin-top: 5px;
+  outline: none;
+}
+.form_wrapper button{
+  padding: 10px 30px;
+}

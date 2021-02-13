@@ -1,16 +1,21 @@
 import './Quotes.css';
 
 const Famous_people = props => {
-  return <div className='quotes'>
+  let renderComponent = props.array.map(item => {
+    return <div className='quotes' key={item.id}>
     <div className="quotes_wrapper">
-      <h4>&mdash; {props.title}</h4>
-      <p>{props.text}</p>
-    </div>
-    <div className="quotes_wrapper">
-      <button>Edit</button>
-      <button>Delete</button>
-    </div>
+    <h4>&mdash; {item.author}</h4>
+    <p>{item.text}</p>
   </div>
+  <div className="quotes_wrapper">
+    <button onClick={() => props.edit(item.id)}>Edit</button>
+    <button onClick={() => props.delete(item.id)}>Delete</button>
+  </div>
+  </div>
+  })
+  return <>
+    {renderComponent}
+  </>
 }
 
 export default Famous_people
