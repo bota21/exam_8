@@ -1,4 +1,4 @@
-.quotes{
+.quotes {
   width: 100%;
   background: #fff;
   border-radius: 5px;
@@ -8,18 +8,22 @@
   justify-content: space-between;
   margin: 10px 0;
 }
-.quotes_wrapper{
-display: flex;
-flex-direction: column;
+
+.quotes_wrapper {
+  display: flex;
+  flex-direction: column;
 }
-.quotes_wrapper h4{
+
+.quotes_wrapper h4 {
   text-transform: capitalize;
   margin: 0;
 }
-.quotes_wrapper p{
+
+.quotes_wrapper p {
   font-size: 14px;
   margin: 10px 0 0 0;
 }
+
 .quotes_wrapper button {
   margin: 10px 0;
   padding: 5px 20px;

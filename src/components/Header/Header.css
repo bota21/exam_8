@@ -1,23 +1,27 @@
-header{
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 50px;
   background: lightblue;
 }
-.logo{
+
+.logo {
   font-size: 30px;
   font-weight: 700;
 }
-.menu_link{
+
+.menu_link {
   text-decoration: none;
   color: #000;
   margin: 0 20px;
 }
-.menu_link:hover{
+
+.menu_link:hover {
   color: goldenrod;
 }
-.active_menu{
+
+.active_menu {
   font-weight: 900;
   color: goldenrod;
 }
