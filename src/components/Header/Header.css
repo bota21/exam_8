@@ -1,0 +1,23 @@
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+  background: lightblue;
+}
+.logo{
+  font-size: 30px;
+  font-weight: 700;
+}
+.menu_link{
+  text-decoration: none;
+  color: #000;
+  margin: 0 20px;
+}
+.menu_link:hover{
+  color: goldenrod;
+}
+.active_menu{
+  font-weight: 900;
+  color: goldenrod;
+}
